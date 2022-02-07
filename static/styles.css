@@ -1,0 +1,217 @@
+:root{
+    --mainbackground: #d7e8fb;
+    --mainheaderbackground: #490478;
+    --buttoncolor: #e6eaff;
+    --extratext: #593990;
+    --mainheadingtext: #cbcee0;  
+    --mainbordercolor: #000053;
+    --maintextcolor: #d3daff;
+
+    color: var(--maintextcolor);
+    background-color: var(--mainbackground);
+
+    font-size: 1.1vw;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 3fr 7fr 3fr;
+
+    margin-bottom: 1em;
+    width: 100%;
+
+    background-color: var(--mainheaderbackground);
+}
+
+header h1{
+    font-size: 3em;
+
+    justify-self: center;
+}
+
+header p{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-items: end;
+
+    padding-right: 1em;
+}
+
+p a{
+    width: 9em;
+    padding-bottom: 0.5em;
+    margin-top: 0;
+
+    text-align: end;
+}
+
+nav{
+    padding: 0.5em;
+    padding-top: 1em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+body{  
+    display:flex;
+
+    flex-direction: column;
+    
+    margin: 0;
+    width: 100%;
+
+    border-bottom-left-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+
+    color: var(--mainheadingtext);
+    background-color: var(--mainbackground);
+}
+
+section, article {
+    align-self: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+table, main, footer, a{
+    font-size: 1.2em;
+
+    margin-top: 1em;
+
+    align-self: center;
+    width:100%;
+
+    color: var(--maintextcolor);
+    background-color: var(--mainheaderbackground);
+}
+
+caption{
+    font-size: 2em;    
+    padding: 1%;
+    padding-bottom: 1em;
+
+    color: var(--mainheadingtext);
+}
+
+
+small{
+    display: block;
+    padding: 0.5em;
+    text-align: center;
+    
+    color: var(--mainheadingtext);
+    background-color: var(--mainheaderbackground);
+}
+
+main{
+    margin-top: 0.5em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+h1,h2,p, form, ol{
+    align-self: center;
+}
+
+section p~ul{
+    align-self: center;
+}
+
+section h2~ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+section h2~ul li button{
+    width: fit-content;
+}
+
+button, input, select{
+    width: 9em;
+    font-size: 0.8em;
+
+    color: var(--extratext);
+    background-color: var(--buttoncolor);
+    border-color: var(--mainbordercolor);
+}
+
+td:nth-child(5) form button, td:last-child form button{
+    width: 2em;
+}
+
+/* TABLES */
+
+nav label {
+    margin-left: 8em;
+}
+
+tbody{
+    align-self: center;
+    align-content: center;
+}
+
+table{
+    border-collapse: collapse;
+    margin-bottom: 10em;
+}
+
+form ~ table {
+    margin: 0;
+}
+
+tr{
+    border-bottom: 2px dashed;
+    border-color: var(--mainbordercolor);
+}
+
+td{
+    padding: 0.3em;
+    padding-left: 1em;
+}
+
+th {
+    text-align: left;
+    padding-left: 1em;
+}
+
+td h1{
+    font-size: 1.4em;
+}
+
+
+/* FORMS */
+
+p~p~form{
+    padding: 0.01em;
+}
+
+form{
+    padding: 1em;
+}
+
+form p {
+    width: 9.9em;
+}
+
+button {
+    border-radius: 0.5em;
+}
+
+#submit {
+    border-radius: 0.5em;
+}
+
+#search {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0;
+}
+
+#search input, #search select {
+    float: right;
+    margin-right: 1em;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body> 
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('welcome')}}">Welcome</a></li>
+                <li><a href="{{ url_for('main')}}">Main Page</a></li>
+                {% if g.user %}
+                <li><a href="{{ url_for('logout')}}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('user')}}">Login Register</a></li>          
+                {% endif %}
+            </ul>
+        </nav>
+
+        <h1>Rated-A</h1>
+        
+        <nav>
+        {% if g.user %}
+        <ul>
+            <li><a href="{{ url_for('profile')}}">User Page: {{ g.user}}</a></li>
+            <li><a href="{{ url_for('newalbum')}}">DB Album Entry</a></li>
+        </ul>
+        {% endif %}
+        </nav>
+    </header>
+
+    <main>
+    {% block main %}
+    {% endblock %}
+    </main>
+
+    <footer>
+        <small>
+            &copy; Eoin Schuch, Web Dev, CA1, 2021.
+        </small>
+    </footer>
+
+</body>
+
+</html>

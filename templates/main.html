@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<nav id='search'>
+    
+    <form action='' method='POST' novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.order.label }}
+        {{ form.order() }}
+        <br/>
+
+        {% for error in form.order.errors %}
+            {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ form.submit() }}
+    </form>
+    
+    <form action='' method='POST' novalidate>
+        {{ yform.hidden_tag() }}
+        {{ yform.years.label }}
+        {{ yform.years() }}
+        <br/>
+
+        {% for error in yform.years.errors %}
+            {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ yform.submit() }}
+    </form>
+    
+    <form action='' method='POST' novalidate>
+        {{ sform.hidden_tag() }}
+        {{ sform.search.label }}
+        {{ sform.search() }}
+        <br/>
+
+        {% for error in sform.search.errors %}
+            {{ error }}
+        {% endfor %}
+        <br>
+
+        {{ sform.submit() }}
+    </form>
+
+</nav>
+
+<section>
+
+    <table>
+        <caption>{{ caption }}</caption>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Album
+                </th>
+                <th>
+                    Year
+                </th>
+                <th>
+                    Band
+                </th>
+                {% if g.user %}
+                <th>
+                    Add
+                </th>
+                <th>
+                    Remove
+                </th>
+                {% endif %}
+            </tr>
+        {% for album in albums %}
+            <tr>
+                <td> {{ album['id'] }}</td>
+                <td><form action='/~es15/cgi-bin/ca1/run.py/tracklist_redirect' method='POST' novalidate><button type='submit' value="{{ album['name'] }}" name='button'>{{ album['name'] }}</button></form></td>
+                <td> {{ album['year'] }}</td>
+                <td> {{ album['band'] }}</td>
+                {% if g.user %}
+                <td><form action='/~es15/cgi-bin/ca1/run.py/add' method='POST' novalidate><button type='submit' value="{{ album['id'] }}" name='button'>+</button></form></td>
+                <td><form action='/~es15/cgi-bin/ca1/run.py/remove' method='POST' novalidate><button type='submit' value="{{ album['id'] }}" name='button'>-</button></form></td>
+                {% endif %}  
+            </tr>
+        {% endfor %}
+    </table>
+
+</section>
+{% endblock %}

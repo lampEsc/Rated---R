@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h1>{{ caption }}</h1>
+
+<article>
+    <h2>{{ songs['name'] }}</h2>
+
+    <ol>
+    {% for song in tracklist %}
+        <li>{{song}}</li>
+    {% endfor %}
+    </ol>  
+
+    <p>
+        performed by {{ songs['band']}} in {{ year }}.
+    </p>
+    
+</article>
+
+{% if g.user and added %}
+<form action='' method='POST' novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.rating.label }}
+    {{ form.rating() }}
+    <br/>
+
+    {% for error in form.rating.errors %}
+        {{ error }}
+    {% endfor %}
+    
+
+    {{ form.submit() }}
+</form>
+
+    <p>
+        Rating: {{ rating }}
+    </p>
+
+{% elif g.user %}
+
+<p>
+    Add Album? <form action='/~es15/cgi-bin/ca1/run.py/add' method='POST' novalidate><button type='submit' value="{{ identity }}" name='button'>+</button></form>
+</p>
+
+{% endif %}  
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section>
+
+    <table>
+        <caption>{{ caption }}</caption>
+        {% for album in albums %}
+            <tr>
+                <td> {{ album['id'] }}</td>
+                <td>{{ album['name'] }}</td>
+                <td> {{ album['year'] }}</td>
+                <td> {{ album['band'] }}</td>
+                <td><form action='/~es15/cgi-bin/ca1/run.py/delete' method='POST' novalidate><button type='submit' value="{{ album['id'] }}" name='button'>-</button></form></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</section>
+{% endblock %}

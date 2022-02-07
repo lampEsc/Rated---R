@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section>
+    <table>
+        <caption>{{ caption }}</caption>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Album
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Band
+            </th>
+            
+            <th>
+                Rating
+            </th>
+            {% if g.user == user %}
+            <th>
+                Remove
+            </th>
+            {% endif %}
+            
+        </tr>
+        {% for album in albums %}
+            <tr>
+                <td> {{ album['id'] }}</td>
+                <td><form action='/~es15/cgi-bin/ca1/run.py/tracklist_redirect' method='POST' novalidate><button type='submit' value="{{ album['name'] }}" name='button'>{{ album['name'] }}</button></form></td>
+                <td> {{ album['year'] }}</td>
+                <td> {{ album['band'] }}</td>
+                {% if album['id'] in ratings %}
+                <td> {{ ratings[album['id']] }} </td>
+                {% endif %}
+                {% if g.user == user %}
+                <td><form action='/~es15/cgi-bin/ca1/run.py/remove' method='POST' novalidate><button type='submit' value="{{ album['id'] }}" name='button'>-</button></form></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p>{{ response }}</p>
+</section>
+{% endblock %}
