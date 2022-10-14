@@ -1,11 +1,3 @@
-'''
-I believe and hope that my website is fairly self explanatory.
-There is however one 'hidden' feature.
-if you use the login - user: 'lamp' and password: 'reallysafepassword_121212'
-You are redirected to a page that allows you to PERMANTLEY delete albums from
-the database, I decided to implement this since anyone can add new albums if they have an account.
-So incase there are any fake albums or albums that cause problems they can be removed.
-'''
 
 from flask import Flask, render_template, redirect, request, url_for, session, g
 from flask_session import Session
